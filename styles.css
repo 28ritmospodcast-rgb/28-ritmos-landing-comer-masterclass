@@ -589,6 +589,27 @@ p {
   background: var(--terracotta);
 }
 
+.guarantee-note {
+  margin: 28px 0;
+  padding: 20px;
+  border: 1px solid rgba(102, 115, 90, 0.28);
+  border-radius: 8px;
+  background: rgba(233, 222, 207, 0.46);
+}
+
+.guarantee-note h3 {
+  margin-bottom: 8px;
+  color: var(--dark-cacao);
+  font-size: clamp(1.35rem, 1.8vw, 1.72rem);
+}
+
+.guarantee-note p {
+  margin: 0;
+  color: var(--warm-charcoal);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
 .subtle-note {
   margin: 18px 0 0;
   color: var(--bronze);
