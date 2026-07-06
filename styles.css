@@ -23,13 +23,25 @@ html {
 
 body {
   margin: 0;
-  font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    linear-gradient(rgba(38, 31, 26, 0.025) 1px, transparent 1px),
+    radial-gradient(circle at 1px 1px, rgba(38, 31, 26, 0.035) 1px, transparent 0),
+    linear-gradient(rgba(38, 31, 26, 0.024) 1px, transparent 1px),
     var(--linen);
-  background-size: 100% 42px;
+  background-size: 18px 18px, 100% 42px;
   color: var(--dark-cacao);
   -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    repeating-linear-gradient(90deg, rgba(139, 115, 84, 0.03) 0 1px, transparent 1px 72px),
+    repeating-linear-gradient(0deg, rgba(139, 115, 84, 0.025) 0 1px, transparent 1px 72px);
+  pointer-events: none;
 }
 
 img {
@@ -54,7 +66,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(243, 239, 231, 0.92);
+  background: rgba(243, 239, 231, 0.9);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
 }
@@ -117,6 +129,24 @@ a {
   text-transform: uppercase;
 }
 
+.section-label,
+.chapter-kicker,
+.offer-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.section-label::after,
+.chapter-kicker::after,
+.offer-label::after {
+  content: "";
+  width: 42px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.46;
+}
+
 h1,
 h2,
 h3 {
@@ -146,7 +176,8 @@ h3 {
 
 p {
   font-size: 1rem;
-  line-height: 1.8;
+  font-weight: 300;
+  line-height: 1.86;
 }
 
 .lead {
@@ -173,6 +204,31 @@ p {
   flex-wrap: wrap;
   align-items: center;
   gap: 18px;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+  color: var(--bronze);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.hero-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-meta span:not(:last-child)::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--soft-clay);
+  opacity: 0.62;
 }
 
 .btn {
@@ -216,6 +272,7 @@ p {
 .checkout-card {
   border: 1px solid var(--line);
   background: var(--paper);
+  box-shadow: 0 24px 70px rgba(38, 31, 26, 0.07);
 }
 
 .hero-image {
@@ -223,6 +280,18 @@ p {
   aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: 8px;
+}
+
+.hero-image::after,
+.quiet-image::after,
+.guide-photo-wrap::after,
+.video-wrap::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(250, 246, 238, 0.42);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .hero-image img,
@@ -235,12 +304,26 @@ p {
 }
 
 .chapter {
+  position: relative;
   padding: clamp(72px, 10vw, 136px) 0;
   border-bottom: 1px solid var(--line);
 }
 
+.chapter::before {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: max(20px, calc((100vw - 1120px) / 2));
+  width: 84px;
+  height: 1px;
+  background: rgba(139, 115, 84, 0.36);
+}
+
 .intro-note {
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(38, 31, 26, 0.032) 1px, transparent 0),
+    var(--paper);
+  background-size: 20px 20px;
 }
 
 .intro-note h2 {
@@ -270,8 +353,21 @@ p {
 }
 
 .pain-list article {
+  position: relative;
   padding-bottom: 28px;
   border-bottom: 1px solid var(--line);
+}
+
+.pain-list article::before {
+  content: "";
+  position: absolute;
+  left: -18px;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--soft-clay);
+  opacity: 0.74;
 }
 
 .pain-list article:last-child {
@@ -285,16 +381,28 @@ p {
 }
 
 .image-band {
+  position: relative;
   height: clamp(240px, 42vw, 520px);
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
 
 .image-band img {
-  filter: saturate(0.82) contrast(0.96);
+  filter: saturate(0.86) contrast(0.96);
+}
+
+.image-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(38, 31, 26, 0.18), transparent 30%, transparent 70%, rgba(38, 31, 26, 0.14)),
+    repeating-linear-gradient(0deg, rgba(250, 246, 238, 0.045) 0 1px, transparent 1px 5px);
+  pointer-events: none;
 }
 
 .quiet-image {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
   aspect-ratio: 5 / 4;
@@ -329,7 +437,10 @@ p {
 .modules article {
   min-height: 260px;
   padding: 28px;
-  background: rgba(250, 246, 238, 0.58);
+  background:
+    linear-gradient(rgba(250, 246, 238, 0.68), rgba(250, 246, 238, 0.68)),
+    radial-gradient(circle at 1px 1px, rgba(38, 31, 26, 0.05) 1px, transparent 0);
+  background-size: auto, 18px 18px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
@@ -366,6 +477,7 @@ p {
 }
 
 .video-wrap {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
   aspect-ratio: 16 / 9;
@@ -384,6 +496,7 @@ p {
 }
 
 .guide-photo-wrap {
+  position: relative;
   overflow: hidden;
   border-radius: 8px;
   aspect-ratio: 4 / 5;
@@ -431,7 +544,10 @@ p {
   padding: 30px;
   border-color: rgba(250, 246, 238, 0.2);
   border-radius: 8px;
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 1px 1px, rgba(38, 31, 26, 0.035) 1px, transparent 0),
+    var(--paper);
+  background-size: 18px 18px;
   color: var(--dark-cacao);
 }
 
