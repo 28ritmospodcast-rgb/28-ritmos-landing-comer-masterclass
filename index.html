@@ -8,8 +8,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '357881474631992');
+    fbq('track', 'PageView');
+  </script>
 </head>
 <body>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=357881474631992&ev=PageView&noscript=1" alt="" /></noscript>
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="#inicio">28 Ritmos</a>
@@ -173,7 +186,7 @@
             <h3>Garantía de satisfacción de 7 días</h3>
             <p>Probá la masterclass sin ningún riesgo. Si sentís que no es para vos, te devolvemos tu dinero. Sin preguntas.</p>
           </div>
-          <a class="btn primary full" href="https://pay.hotmart.com/C106480987Y">Ir al checkout seguro</a>
+          <a class="btn primary full" href="https://pay.hotmart.com/C106480987Y" onclick="fbq('track', 'InitiateCheckout', {content_name: 'Comé con tu Ciclo', value: 17, currency: 'USD'});">Ir al checkout seguro</a>
           <p class="subtle-note">El complemento del curso aparece dentro del checkout, no en esta página.</p>
         </div>
       </div>
