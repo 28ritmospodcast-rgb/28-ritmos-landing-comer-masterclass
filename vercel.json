@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/lee-tu-ciclo",
+      "destination": "/lee-tu-ciclo.html"
+    }
+  ]
+}
