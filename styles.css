@@ -421,6 +421,74 @@ p {
   color: var(--warm-charcoal);
 }
 
+.body-story {
+  background:
+    linear-gradient(rgba(233, 222, 207, 0.72), rgba(233, 222, 207, 0.72)),
+    radial-gradient(circle at 1px 1px, rgba(38, 31, 26, 0.035) 1px, transparent 0);
+  background-size: auto, 18px 18px;
+}
+
+.body-story-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(420px, 1fr);
+  gap: clamp(38px, 7vw, 92px);
+  align-items: center;
+}
+
+.body-story-copy h2 {
+  max-width: 13ch;
+  margin-bottom: 28px;
+}
+
+.body-story-copy p:not(.section-label) {
+  max-width: 64ch;
+  color: var(--warm-charcoal);
+}
+
+.body-story-photos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2.6vw, 28px);
+  align-items: end;
+}
+
+.story-photo {
+  position: relative;
+  margin: 0;
+}
+
+.story-photo-before {
+  transform: translateY(28px);
+}
+
+.story-photo img {
+  aspect-ratio: 3 / 4;
+  height: 100%;
+  object-fit: cover;
+  border: 1px solid rgba(38, 31, 26, 0.16);
+  border-radius: 8px;
+  box-shadow: 0 24px 70px rgba(38, 31, 26, 0.09);
+  filter: saturate(0.9) contrast(0.96);
+}
+
+.story-photo figcaption {
+  margin-top: 16px;
+  color: var(--warm-charcoal);
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.story-photo figcaption span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--deep-olive);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
 .section-heading {
   max-width: 760px;
   margin-bottom: 48px;
@@ -760,6 +828,7 @@ p {
   .hero-grid,
   .split-grid,
   .split-grid.reverse,
+  .body-story-grid,
   .guide-grid,
   .checkout-grid {
     grid-template-columns: 1fr;
@@ -775,6 +844,10 @@ p {
 
   .outcome-grid {
     grid-template-columns: 1fr;
+  }
+
+  .body-story-photos {
+    max-width: 760px;
   }
 }
 
@@ -835,6 +908,15 @@ p {
   .quiet-image,
   .guide-photo-wrap {
     aspect-ratio: 4 / 5;
+  }
+
+  .body-story-photos {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .story-photo-before {
+    transform: none;
   }
 
   .checkout-card {
