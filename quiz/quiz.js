@@ -228,7 +228,6 @@ function getResult() {
 function renderResult() {
   state.resultKey = getResult();
   const result = archetypes[state.resultKey];
-  document.querySelector("#result-index").textContent = result.index;
   document.querySelector("#result-title").textContent = result.title;
   document.querySelector("#result-affirmation").textContent = result.affirmation;
   document.querySelector("#result-description").textContent = result.description;
