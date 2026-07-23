@@ -3,6 +3,10 @@
     {
       "source": "/lee-tu-ciclo",
       "destination": "/lee-tu-ciclo.html"
+    },
+    {
+      "source": "/quiz",
+      "destination": "/quiz/index.html"
     }
   ]
 }

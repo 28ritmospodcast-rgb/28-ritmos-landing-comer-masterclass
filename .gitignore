@@ -3,4 +3,5 @@ node_modules/
 dist/
 .vscode/
 .env
+.env.local
 .codex/

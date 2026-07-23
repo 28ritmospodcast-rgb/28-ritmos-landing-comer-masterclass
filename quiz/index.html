@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3efe7">
+  <meta name="description" content="Un quiz de 28 Ritmos para descubrir cómo te estás relacionando hoy con tu ciclo menstrual.">
+  <title>¿Qué arquetipo cíclico sos? · 28 Ritmos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="quiz.css">
+  <script src="https://t.contentsquare.net/uxa/dbc3b6485db38.js" defer></script>
+  <script src="quiz.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="../">28 Ritmos</a>
+    <p class="header-note">Tu cuerpo, tu brújula interna</p>
+  </header>
+
+  <main>
+    <section class="screen intro is-active" id="intro" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="eyebrow">Quiz de autoconocimiento cíclico</p>
+        <h1 id="intro-title">¿Qué arquetipo cíclico sos?</h1>
+        <p class="lead">Tu manera de vivir el ciclo guarda pistas: en lo que sentís, en cómo te cuidás y también en lo que todavía no sabés nombrar.</p>
+        <p class="quiet">Respondé desde cómo estás hoy. No hay una forma correcta de ser cíclica, ni un resultado para alcanzar.</p>
+        <button class="button primary" id="start-button" type="button">
+          Empezar el quiz
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="duration">6 preguntas · menos de 3 minutos</p>
+      </div>
+      <figure class="intro-image">
+        <img src="../imagenes/plant party-24.jpg" alt="Una mujer observando plantas en un jardín frondoso">
+        <figcaption>Una invitación a mirarte con curiosidad, no con juicio.</figcaption>
+      </figure>
+    </section>
+
+    <section class="screen quiz-screen" id="quiz" aria-live="polite" aria-labelledby="question-title">
+      <div class="quiz-shell">
+        <div class="progress-meta">
+          <p id="question-count">Pregunta 1 de 6</p>
+          <button class="text-button" id="restart-top" type="button">Volver a empezar</button>
+        </div>
+        <div class="progress-track" aria-hidden="true">
+          <span id="progress-bar"></span>
+        </div>
+        <div class="question-wrap">
+          <p class="question-number" id="question-number">01</p>
+          <h2 id="question-title"></h2>
+          <div class="answers" id="answers" role="group" aria-labelledby="question-title"></div>
+        </div>
+        <div class="quiz-controls">
+          <button class="button secondary" id="back-button" type="button">← Anterior</button>
+          <p>Elegí la frase que más se acerque a vos.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen result-screen" id="result" aria-live="polite" aria-labelledby="result-title">
+      <div class="result-heading">
+        <p class="eyebrow">Tu arquetipo cíclico de hoy</p>
+        <p class="result-index" id="result-index">01 / 07</p>
+        <h1 id="result-title"></h1>
+        <blockquote id="result-affirmation"></blockquote>
+      </div>
+
+      <div class="result-body">
+        <div>
+          <p class="result-label">Lo que este resultado refleja</p>
+          <p class="result-description" id="result-description"></p>
+          <p class="result-note">Un arquetipo no es una caja ni un diagnóstico. Es una puerta de entrada para observarte. Podés reconocerte en más de uno y tu resultado puede cambiar con vos.</p>
+        </div>
+        <aside class="gift">
+          <p class="result-label">Tu recurso gratuito</p>
+          <h2 id="gift-title"></h2>
+          <p id="gift-description"></p>
+          <form class="signup-form" id="signup-form" novalidate>
+            <div class="field">
+              <label for="subscriber-email">¿A qué correo te lo enviamos?</label>
+              <input id="subscriber-email" name="email" type="email" autocomplete="email" placeholder="vos@ejemplo.com" required>
+            </div>
+            <label class="consent">
+              <input id="subscriber-consent" name="consent" type="checkbox" required>
+              <span>Acepto recibir este recurso y otros correos de 28 Ritmos. Puedo darme de baja cuando quiera.</span>
+            </label>
+            <div class="hidden-field" aria-hidden="true">
+              <label for="subscriber-company">No completes este campo</label>
+              <input id="subscriber-company" name="company" type="text" tabindex="-1" autocomplete="off">
+            </div>
+            <button class="button primary" id="signup-button" type="submit">
+              Recibir mi recurso
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="form-status" id="form-status" role="status"></p>
+          </form>
+          <div class="download-ready" id="download-ready" hidden>
+            <p><strong>Ya está.</strong> Tu recurso está listo para acompañarte.</p>
+            <a class="button primary" id="gift-link" href="#" target="_blank" rel="noopener">
+              Abrir mi recurso
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="result-footer">
+        <button class="text-button strong" id="restart-button" type="button">Volver a hacer el quiz</button>
+        <a class="text-link" href="../lee-tu-ciclo">Quiero aprender a leer mi ciclo →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>28 Ritmos · Educación cíclica y autoconocimiento corporal</p>
+  </footer>
+</body>
+</html>
