@@ -6,7 +6,7 @@ const archetypes = {
     description: "Sos intuitiva y encontrás sentido en los gestos que convierten lo cotidiano en ritual. Tu ciclo puede ser un espacio de conexión interna, pausa y escucha de eso que no siempre se explica con palabras.",
     giftTitle: "Tu Altar Cíclico",
     giftDescription: "Una guía para crear un espacio propio de registro, presencia y conexión con cada fase.",
-    giftUrl: "Recursos gratuitos para cada arquetipo/1. Tu Altar Cíclico.pdf"
+    giftUrl: "/quiz/Recursos gratuitos para cada arquetipo/1. Tu Altar Cíclico.pdf"
   },
   ejecutiva: {
     index: "02 / 07",
@@ -15,7 +15,7 @@ const archetypes = {
     description: "Sos enfocada, resolutiva y tenés una gran capacidad para llevar ideas a la acción. Tu aprendizaje no está en apagar esa potencia, sino en usarla con inteligencia: avanzar cuando hay energía y aflojar sin sentir que valés menos.",
     giftTitle: "Cómo sostener tu visión",
     giftDescription: "Una guía para cuidar tu energía y sostener lo importante sin colapsar en el intento.",
-    giftUrl: "Recursos gratuitos para cada arquetipo/2. Cómo sostener tu vision sin colapsar en el intento .pdf"
+    giftUrl: "/quiz/Recursos gratuitos para cada arquetipo/2. Cómo sostener tu vision sin colapsar en el intento .pdf"
   },
   desconectada: {
     index: "03 / 07",
@@ -24,7 +24,7 @@ const archetypes = {
     description: "Querés entenderte, aunque a veces no sepas por dónde empezar. Tal vez tu ciclo aparece como sorpresa o como un idioma ajeno. No llegaste tarde: la conexión se construye con preguntas pequeñas y una observación a la vez.",
     giftTitle: "Tu Primer Diccionario Menstrual",
     giftDescription: "Un punto de partida simple para empezar a nombrar las señales que ya están en tu cuerpo.",
-    giftUrl: "Recursos gratuitos para cada arquetipo/3. Tu Primer Diccionario Menstrual.pdf"
+    giftUrl: "/quiz/Recursos gratuitos para cada arquetipo/3. Tu Primer Diccionario Menstrual.pdf"
   },
   sensible: {
     index: "04 / 07",
@@ -33,7 +33,7 @@ const archetypes = {
     description: "Sentís con intensidad y profundidad. Tus emociones no son un ruido que hay que silenciar: pueden ser información sobre tus ritmos, tus límites y lo que necesitás. El camino es escucharlas sin convertirlas en una culpa más.",
     giftTitle: "No estoy rota, estoy sintiendo",
     giftDescription: "Una compañía amorosa para atravesar la intensidad emocional con más contexto y menos juicio.",
-    giftUrl: "Recursos gratuitos para cada arquetipo/4. No estoy rota, estoy sintiendo.pdf"
+    giftUrl: "/quiz/Recursos gratuitos para cada arquetipo/4. No estoy rota, estoy sintiendo.pdf"
   },
   sabia: {
     index: "05 / 07",
@@ -42,7 +42,7 @@ const archetypes = {
     description: "Sos introspectiva y sabés que debajo de cada señal puede haber algo para observar. Buscás comprender tu biología sin separarla de tu experiencia. Tu silencio no es ausencia: es un lugar fértil para reconocer patrones.",
     giftTitle: "Ritual de luna menguante",
     giftDescription: "Una práctica de pausa, escucha y cierre para volver a lo esencial.",
-    giftUrl: "Recursos gratuitos para cada arquetipo/5. Ritual de luna menguante.pdf"
+    giftUrl: "/quiz/Recursos gratuitos para cada arquetipo/5. Ritual de luna menguante.pdf"
   },
   rebelde: {
     index: "06 / 07",
@@ -51,7 +51,7 @@ const archetypes = {
     description: "Sos auténtica, directa y no querés seguir escondiendo lo que durante tanto tiempo se trató como incómodo. Tu voz abre conversaciones. El desafío es hacer espacio para esa fuerza sin perder la escucha íntima de tu propio cuerpo.",
     giftTitle: "Mi Cuerpo es Revolución",
     giftDescription: "Un manifiesto para nombrar, visibilizar y habitar el ciclo sin vergüenza.",
-    giftUrl: "Recursos gratuitos para cada arquetipo/6. Mi Cuerpo es Revolución.pdf"
+    giftUrl: "/quiz/Recursos gratuitos para cada arquetipo/6. Mi Cuerpo es Revolución.pdf"
   },
   alquimista: {
     index: "07 / 07",
@@ -60,7 +60,7 @@ const archetypes = {
     description: "Sos curiosa y te entusiasma unir datos, biología y experiencia. Querés entender patrones para tomar decisiones con más contexto. Tu brújula está en usar la información para acompañarte, no para exigirle perfección a tu cuerpo.",
     giftTitle: "Empezá a trackear tu ciclo",
     giftDescription: "Una guía práctica para transformar datos sueltos en observaciones que tengan sentido para vos.",
-    giftUrl: "Recursos gratuitos para cada arquetipo/7. Empezá a trackear tu ciclo.pdf"
+    giftUrl: "/quiz/Recursos gratuitos para cada arquetipo/7. Empezá a trackear tu ciclo.pdf"
   }
 };
 
