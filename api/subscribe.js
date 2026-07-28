@@ -11,13 +11,13 @@ const ALLOWED_ARCHETYPES = new Set([
   "La Alquimista Hormonal"
 ]);
 const RESOURCE_PATHS = {
-  "La Ritualista Lunar": "1. Tu Altar Cíclico.pdf",
-  "La Ejecutiva Imparable": "2. Cómo sostener tu vision sin colapsar en el intento .pdf",
-  "La Desconectada Amorosa": "3. Tu Primer Diccionario Menstrual.pdf",
-  "La Sensible Cambiante": "4. No estoy rota, estoy sintiendo.pdf",
-  "La Sabia Silenciosa": "5. Ritual de luna menguante.pdf",
-  "La Rebelde de la Sangre": "6. Mi Cuerpo es Revolución.pdf",
-  "La Alquimista Hormonal": "7. Empezá a trackear tu ciclo.pdf"
+  "La Ritualista Lunar": "1-tu-altar-ciclico.pdf",
+  "La Ejecutiva Imparable": "2-sostener-tu-vision.pdf",
+  "La Desconectada Amorosa": "3-diccionario-menstrual.pdf",
+  "La Sensible Cambiante": "4-no-estoy-rota.pdf",
+  "La Sabia Silenciosa": "5-ritual-luna-menguante.pdf",
+  "La Rebelde de la Sangre": "6-mi-cuerpo-es-revolucion.pdf",
+  "La Alquimista Hormonal": "7-trackear-tu-ciclo.pdf"
 };
 
 function respond(response, status, body) {
