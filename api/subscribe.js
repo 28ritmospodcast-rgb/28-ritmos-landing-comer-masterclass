@@ -10,6 +10,15 @@ const ALLOWED_ARCHETYPES = new Set([
   "La Rebelde de la Sangre",
   "La Alquimista Hormonal"
 ]);
+const RESOURCE_PATHS = {
+  "La Ritualista Lunar": "1. Tu Altar Cíclico.pdf",
+  "La Ejecutiva Imparable": "2. Cómo sostener tu vision sin colapsar en el intento .pdf",
+  "La Desconectada Amorosa": "3. Tu Primer Diccionario Menstrual.pdf",
+  "La Sensible Cambiante": "4. No estoy rota, estoy sintiendo.pdf",
+  "La Sabia Silenciosa": "5. Ritual de luna menguante.pdf",
+  "La Rebelde de la Sangre": "6. Mi Cuerpo es Revolución.pdf",
+  "La Alquimista Hormonal": "7. Empezá a trackear tu ciclo.pdf"
+};
 
 function respond(response, status, body) {
   response.status(status).json(body);
@@ -45,6 +54,9 @@ module.exports = async function subscribe(request, response) {
     .createHash("md5")
     .update(normalizedEmail)
     .digest("hex");
+  const resourceUrl = encodeURI(
+    `https://28-ritmos-landing-comer-masterclass.vercel.app/quiz/Recursos gratuitos para cada arquetipo/${RESOURCE_PATHS[archetype]}`
+  );
   const baseUrl = `https://${server}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members/${subscriberHash}`;
   const authorization = `Basic ${Buffer.from(`key:${apiKey}`).toString("base64")}`;
 
@@ -58,7 +70,10 @@ module.exports = async function subscribe(request, response) {
       body: JSON.stringify({
         email_address: normalizedEmail,
         status_if_new: "subscribed",
-        merge_fields: { ARQUETIPO: archetype }
+        merge_fields: {
+          ARQUETIPO: archetype,
+          RECURSO: resourceUrl
+        }
       })
     });
 
