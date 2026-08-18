@@ -30,14 +30,16 @@ module.exports = async function subscribe(request, response) {
     return respond(response, 405, { message: "Método no permitido." });
   }
 
-  const { email, archetype, consent, website } = request.body || {};
+  const { name, email, archetype, consent, website } = request.body || {};
   if (website) return respond(response, 200, { ok: true });
 
+  const normalizedName = String(name || "").trim().replace(/\s+/g, " ");
   const normalizedEmail = String(email || "").trim().toLowerCase();
   const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(normalizedEmail);
-  if (!validEmail || !consent || !ALLOWED_ARCHETYPES.has(archetype)) {
+  const validName = normalizedName.length > 0 && normalizedName.length <= 80 && !/[\u0000-\u001F\u007F]/.test(normalizedName);
+  if (!validName || !validEmail || !consent || !ALLOWED_ARCHETYPES.has(archetype)) {
     return respond(response, 400, {
-      message: "Revisá el correo y el consentimiento antes de continuar."
+      message: "Revisá tu nombre, el correo y el consentimiento antes de continuar."
     });
   }
 
@@ -71,6 +73,7 @@ module.exports = async function subscribe(request, response) {
         email_address: normalizedEmail,
         status_if_new: "subscribed",
         merge_fields: {
+          FNAME: normalizedName,
           ARQUETIPO: archetype,
           RECURSO: resourceUrl
         }

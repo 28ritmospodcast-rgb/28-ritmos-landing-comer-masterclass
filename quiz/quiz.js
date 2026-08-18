@@ -252,6 +252,7 @@ function resetSignupForm() {
   form.classList.remove("is-loading");
   document.querySelector("#signup-button").disabled = false;
   document.querySelector("#form-status").textContent = "";
+  document.querySelector("#subscriber-name").removeAttribute("aria-invalid");
   document.querySelector("#subscriber-email").removeAttribute("aria-invalid");
   document.querySelector("#download-ready").hidden = true;
 }
@@ -259,12 +260,20 @@ function resetSignupForm() {
 async function handleSignup(event) {
   event.preventDefault();
   const form = event.currentTarget;
+  const nameField = document.querySelector("#subscriber-name");
   const emailField = document.querySelector("#subscriber-email");
   const consentField = document.querySelector("#subscriber-consent");
   const status = document.querySelector("#form-status");
   const button = document.querySelector("#signup-button");
 
   if (document.querySelector("#subscriber-company").value) return;
+  if (!nameField.value.trim()) {
+    nameField.setAttribute("aria-invalid", "true");
+    status.textContent = "Escribí tu nombre para continuar.";
+    nameField.focus();
+    return;
+  }
+  nameField.removeAttribute("aria-invalid");
   if (!emailField.validity.valid) {
     emailField.setAttribute("aria-invalid", "true");
     status.textContent = "Escribí un correo válido para continuar.";
@@ -287,6 +296,7 @@ async function handleSignup(event) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        name: nameField.value.trim(),
         email: emailField.value.trim().toLowerCase(),
         archetype: archetypes[state.resultKey].title,
         consent: true,

@@ -562,6 +562,10 @@ blockquote {
   font-weight: 600;
 }
 
+.field + .field {
+  margin-top: 14px;
+}
+
 .field input {
   width: 100%;
   min-height: 52px;
