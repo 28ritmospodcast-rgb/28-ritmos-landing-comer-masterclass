@@ -20,7 +20,7 @@ const ctas = {
 
 const cards = [
   {
-    name: "La Radiante",
+    name: "Mujer Radiante",
     image: "oraculo/assets/humana-radiante.webp",
     alt: "Dos figuras humanas bajo un ojo radiante",
     essential: "Hay algo en vos que hoy no quiere esconderse.",
@@ -31,7 +31,7 @@ const cards = [
     cta: "lee"
   },
   {
-    name: "La Creadora",
+    name: "Mujer Creadora",
     image: "oraculo/assets/humana-creadora.webp",
     alt: "Figura humana sentada con ramas y ojos naciendo de la cabeza",
     essential: "No necesitás terminarlo hoy. Necesitás darle una primera forma.",
@@ -42,7 +42,7 @@ const cards = [
     cta: "comunidad"
   },
   {
-    name: "La Magnética",
+    name: "Mujer Magnética",
     image: "oraculo/assets/humana-magnetica.webp",
     alt: "Dos figuras humanas frente a un portal ceremonial",
     essential: "El placer también puede ser información.",
@@ -53,7 +53,7 @@ const cards = [
     cta: "comunidad"
   },
   {
-    name: "La Visionaria",
+    name: "Mujer Visionaria",
     image: "oraculo/assets/cristal-1.webp",
     alt: "Mano sosteniendo un cristal dentro de formas geométricas",
     essential: "Tener claridad no significa tener que hacerlo todo.",
@@ -64,7 +64,7 @@ const cards = [
     cta: "comunidad"
   },
   {
-    name: "La Voz",
+    name: "Mujer Voz",
     image: "oraculo/assets/botanica-2.webp",
     alt: "Flores y triángulo invertido en una carta oracular",
     essential: "Lo que podés nombrar también puede ser acompañado.",
@@ -75,7 +75,7 @@ const cards = [
     cta: "lee"
   },
   {
-    name: "La Exploradora",
+    name: "Mujer Exploradora",
     image: "oraculo/assets/botanica-4.webp",
     alt: "Hoja grande sobre formas geométricas y estrellas",
     essential: "No toda energía necesita convertirse en productividad.",
@@ -86,7 +86,7 @@ const cards = [
     cta: "comunidad"
   },
   {
-    name: "La Enraizada",
+    name: "Mujer Raíz",
     image: "oraculo/assets/humana-enraizada.webp",
     alt: "Figura humana recogida con ramas y ojos naciendo de la cabeza",
     essential: "Alimentarte antes de agotarte también es cuidado.",
@@ -97,7 +97,7 @@ const cards = [
     cta: "come"
   },
   {
-    name: "La Guardiana del Espacio",
+    name: "Mujer Guardiana del Espacio",
     image: "oraculo/assets/cristal-2.webp",
     alt: "Mano levantando un grupo de cristales",
     essential: "Proteger tu espacio no es rechazar a los demás.",
@@ -108,7 +108,7 @@ const cards = [
     cta: "lee"
   },
   {
-    name: "La que Baja el Ruido",
+    name: "Mujer que Baja el Ruido",
     image: "oraculo/assets/botanica-3.webp",
     alt: "Ramas rodeando un círculo oscuro en una carta oracular",
     essential: "No todo necesita una respuesta ahora.",
@@ -119,7 +119,7 @@ const cards = [
     cta: "comunidad"
   },
   {
-    name: "La que Vuelve al Cuerpo",
+    name: "Mujer que Vuelve al Cuerpo",
     image: "oraculo/assets/cristal-4.webp",
     alt: "Mano tocando un cristal ovalado dentro de un círculo",
     essential: "Tu cuerpo no es una interrupción de tu vida. Es el lugar donde sucede.",
@@ -130,7 +130,7 @@ const cards = [
     cta: "come"
   },
   {
-    name: "La Receptiva",
+    name: "Mujer Receptiva",
     image: "oraculo/assets/cristal-3.webp",
     alt: "Mano sosteniendo un cristal facetado con estrellas",
     essential: "No todo lo tenés que sostener sola.",
@@ -141,7 +141,7 @@ const cards = [
     cta: "comunidad"
   },
   {
-    name: "La que Descansa",
+    name: "Mujer que Descansa",
     image: "oraculo/assets/botanica-1.webp",
     alt: "Flor dentro de un círculo en una carta oracular",
     essential: "No necesitás llegar al colapso para merecer descanso.",
