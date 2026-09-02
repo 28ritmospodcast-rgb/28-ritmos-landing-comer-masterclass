@@ -234,14 +234,15 @@ function restart() {
 
 async function shareOrDownload() {
   if (!selectedCard) return;
-  const shareText = `Hoy el Oráculo de mi Ritmo me mostró ${selectedCard.name}.\n${selectedCard.essential}\n¿Qué ritmo está presente en vos hoy?\n@28ritmos`;
+  const shareFile = await createStoryImage(selectedCard);
+  const shareText = `Hoy el Oráculo de mi Ritmo me mostró ${selectedCard.name}. @28ritmos`;
 
-  if (navigator.share) {
+  if (navigator.share && navigator.canShare?.({ files: [shareFile] })) {
     try {
       await navigator.share({
         title: "El Oráculo de tu Ritmo",
         text: shareText,
-        url: window.location.href
+        files: [shareFile]
       });
       track("oracle_card_shared", { oracle_card: selectedCard.name });
       return;
@@ -250,44 +251,77 @@ async function shareOrDownload() {
     }
   }
 
-  await downloadShareImage(selectedCard);
+  downloadFile(shareFile, `${slugify(selectedCard.name)}-historia-28-ritmos.png`);
+  track("oracle_card_downloaded", { oracle_card: selectedCard.name });
 }
 
-async function downloadShareImage(card) {
+async function createStoryImage(card) {
+  const image = new Image();
+  image.crossOrigin = "anonymous";
+  image.src = card.image;
   try {
-    const image = new Image();
-    image.crossOrigin = "anonymous";
-    image.src = card.image;
     await image.decode();
-
-    const canvas = document.createElement("canvas");
-    canvas.width = 1080;
-    canvas.height = 1350;
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#4A0F16";
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.fillStyle = "#681B22";
-    ctx.fillRect(48, 48, canvas.width - 96, canvas.height - 96);
-    ctx.drawImage(image, 280, 92, 520, 728);
-
-    ctx.fillStyle = "#F8E8DC";
-    ctx.textAlign = "center";
-    ctx.font = "700 68px Georgia";
-    ctx.fillText(card.name, 540, 930);
-    ctx.font = "400 36px Georgia";
-    wrapCanvasText(ctx, card.essential, 540, 1000, 820, 48);
-    ctx.fillStyle = "#B99058";
-    ctx.font = "600 26px Arial";
-    ctx.fillText("28 Ritmos · El Oráculo de tu Ritmo", 540, 1240);
-
-    const link = document.createElement("a");
-    link.download = `${slugify(card.name)}-28-ritmos.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-    track("oracle_card_downloaded", { oracle_card: selectedCard.name });
   } catch (error) {
     alert("El oráculo necesita un momento más. Tus respuestas siguen acá.");
+    throw error;
   }
+
+  const canvas = document.createElement("canvas");
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "#310910";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#4A0F16";
+  ctx.fillRect(56, 56, canvas.width - 112, canvas.height - 112);
+  ctx.strokeStyle = "rgba(213, 173, 93, 0.52)";
+  ctx.lineWidth = 3;
+  roundRect(ctx, 86, 86, canvas.width - 172, canvas.height - 172, 46);
+  ctx.stroke();
+
+  ctx.fillStyle = "#D5AD5D";
+  ctx.textAlign = "center";
+  ctx.font = "600 34px Poppins, Arial";
+  ctx.fillText("El Oráculo de tu Ritmo", 540, 186);
+
+  drawContainedImage(ctx, image, 230, 266, 620, 868);
+
+  ctx.fillStyle = "#F8E8DC";
+  ctx.font = "700 86px Georgia";
+  wrapCanvasText(ctx, card.name, 540, 1275, 860, 88);
+  ctx.font = "400 42px Georgia";
+  wrapCanvasText(ctx, card.essential, 540, 1436, 830, 58);
+
+  ctx.fillStyle = "#D5AD5D";
+  ctx.font = "700 40px Poppins, Arial";
+  ctx.fillText("@28ritmos", 540, 1730);
+  ctx.fillStyle = "rgba(248, 232, 220, 0.72)";
+  ctx.font = "400 26px Poppins, Arial";
+  ctx.fillText("Compartí tu carta y etiquetanos", 540, 1782);
+
+  const blob = await new Promise((resolve) => canvas.toBlob(resolve, "image/png", 0.95));
+  if (!blob) {
+    throw new Error("No se pudo crear la imagen para compartir.");
+  }
+  return new File([blob], `${slugify(card.name)}-historia-28-ritmos.png`, { type: "image/png" });
+}
+
+function drawContainedImage(ctx, image, x, y, width, height) {
+  const scale = Math.min(width / image.naturalWidth, height / image.naturalHeight);
+  const drawWidth = image.naturalWidth * scale;
+  const drawHeight = image.naturalHeight * scale;
+  const drawX = x + (width - drawWidth) / 2;
+  const drawY = y + (height - drawHeight) / 2;
+  ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+}
+
+function downloadFile(file, filename) {
+  const link = document.createElement("a");
+  link.download = filename;
+  link.href = URL.createObjectURL(file);
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(link.href), 1000);
 }
 
 function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -304,6 +338,19 @@ function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
     }
   });
   ctx.fillText(line.trim(), x, y);
+}
+
+function roundRect(ctx, x, y, width, height, radius) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.lineTo(x + width - radius, y);
+  ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+  ctx.lineTo(x + width, y + height - radius);
+  ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+  ctx.lineTo(x + radius, y + height);
+  ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+  ctx.lineTo(x, y + radius);
+  ctx.quadraticCurveTo(x, y, x + radius, y);
 }
 
 function slugify(text) {
