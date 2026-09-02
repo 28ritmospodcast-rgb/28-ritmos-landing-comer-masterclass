@@ -297,9 +297,11 @@ p {
 .cover-card img,
 .result-card-wrap img {
   width: min(430px, 100%);
+  height: auto;
   margin: 0 auto;
   border: 1px solid rgba(255, 218, 139, 0.5);
   border-radius: 17px;
+  object-fit: contain;
   box-shadow: 0 10px 34px rgba(49, 9, 16, 0.28);
 }
 
@@ -417,9 +419,12 @@ p {
 }
 
 .spread-card img {
+  width: 100%;
+  height: auto;
   border: 1px solid rgba(255, 218, 139, 0.62);
   border-radius: 14px;
   background: #D3A34D;
+  object-fit: contain;
 }
 
 .result-screen {
