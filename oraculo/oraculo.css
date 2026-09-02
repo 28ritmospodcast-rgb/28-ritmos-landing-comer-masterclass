@@ -1,0 +1,544 @@
+:root {
+  --red-night: #310910;
+  --deep-wine: #4A0F16;
+  --dried-blood: #681B22;
+  --garnet: #7A1F28;
+  --clay: #A9473F;
+  --burnt-rose: #C87870;
+  --rose-paper: #E8B6AA;
+  --cream: #F8E8DC;
+  --soft-cream: #F2D6CA;
+  --old-gold: #B99058;
+  --shadow: rgba(38, 5, 10, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--cream);
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at 12% 8%, rgba(200, 120, 112, 0.26), transparent 28%),
+    radial-gradient(circle at 84% 12%, rgba(169, 71, 63, 0.26), transparent 30%),
+    radial-gradient(circle at 50% 92%, rgba(185, 144, 88, 0.16), transparent 24%),
+    linear-gradient(140deg, var(--red-night), var(--deep-wine) 45%, var(--dried-blood));
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    repeating-linear-gradient(90deg, rgba(248, 232, 220, 0.026) 0 1px, transparent 1px 58px),
+    repeating-linear-gradient(0deg, rgba(248, 232, 220, 0.018) 0 1px, transparent 1px 58px),
+    radial-gradient(circle at 1px 1px, rgba(248, 232, 220, 0.055) 1px, transparent 0);
+  background-size: auto, auto, 18px 18px;
+  pointer-events: none;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.oracle-shell {
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.oracle-screen {
+  display: none;
+  min-height: 100svh;
+  padding: clamp(28px, 6vw, 72px) clamp(18px, 5vw, 72px);
+}
+
+.oracle-screen.is-active {
+  display: grid;
+  animation: screenIn 520ms ease both;
+}
+
+.threshold-grid {
+  width: min(1120px, 100%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(260px, 0.68fr);
+  gap: clamp(32px, 7vw, 86px);
+  align-items: center;
+}
+
+.threshold-copy,
+.ritual-panel,
+.box-copy,
+.result-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.oracle-eyebrow {
+  margin: 0 0 18px;
+  color: var(--old-gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  color: var(--cream);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 8.4ch;
+  font-size: clamp(4.4rem, 16vw, 9rem);
+  line-height: 0.86;
+}
+
+h2 {
+  max-width: 10ch;
+  font-size: clamp(3.1rem, 11vw, 6.6rem);
+  line-height: 0.88;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: var(--rose-paper);
+}
+
+p {
+  color: rgba(248, 232, 220, 0.84);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.78;
+}
+
+.oracle-lead {
+  max-width: 48ch;
+  margin: 30px 0 0;
+  color: var(--cream);
+  font-size: clamp(1.08rem, 2.2vw, 1.28rem);
+  line-height: 1.66;
+}
+
+.threshold-copy p:not(.oracle-eyebrow):not(.oracle-lead):not(.oracle-note) {
+  max-width: 47ch;
+}
+
+.oracle-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  margin-top: 22px;
+  padding: 0 24px;
+  border: 1px solid rgba(248, 232, 220, 0.36);
+  border-radius: 999px;
+  background: var(--cream);
+  color: var(--deep-wine);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 16px 44px rgba(49, 9, 16, 0.28);
+  transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+}
+
+.oracle-button:hover,
+.oracle-button:focus-visible {
+  background: var(--soft-cream);
+  transform: translateY(-2px);
+}
+
+.oracle-button:focus-visible,
+.spread-card:focus-visible {
+  outline: 3px solid var(--old-gold);
+  outline-offset: 5px;
+}
+
+.oracle-button.secondary {
+  background: rgba(248, 232, 220, 0.12);
+  color: var(--cream);
+}
+
+.oracle-button.quiet {
+  background: transparent;
+  color: var(--cream);
+}
+
+.oracle-note {
+  max-width: 46ch;
+  margin-top: 18px;
+  color: rgba(248, 232, 220, 0.64);
+  font-size: 0.86rem;
+}
+
+.temple-glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 70% 50%, rgba(200, 120, 112, 0.22), transparent 22%),
+    linear-gradient(90deg, rgba(49, 9, 16, 0.7), transparent 48%, rgba(49, 9, 16, 0.42));
+  pointer-events: none;
+}
+
+.cover-card,
+.result-card-wrap {
+  margin: 0;
+  padding: clamp(10px, 2vw, 16px);
+  border: 1px solid rgba(248, 232, 220, 0.18);
+  border-radius: 22px;
+  background:
+    linear-gradient(150deg, rgba(248, 232, 220, 0.12), rgba(248, 232, 220, 0.035)),
+    rgba(74, 15, 22, 0.62);
+  box-shadow: 0 30px 90px var(--shadow);
+}
+
+.cover-card img,
+.result-card-wrap img {
+  width: min(430px, 100%);
+  margin: 0 auto;
+  border-radius: 16px;
+}
+
+.prepare-screen,
+.box-screen {
+  place-items: center;
+}
+
+.ritual-panel {
+  width: min(760px, 100%);
+  text-align: center;
+}
+
+.ritual-panel h2 {
+  max-width: 9ch;
+  margin: 0 auto;
+}
+
+.ritual-panel p {
+  max-width: 54ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.breath-cue {
+  width: 172px;
+  height: 172px;
+  margin: 34px auto 24px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(248, 232, 220, 0.16);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200, 120, 112, 0.2), rgba(104, 27, 34, 0.18) 62%, transparent 63%);
+}
+
+.breath-cue span {
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: rgba(248, 232, 220, 0.84);
+  box-shadow: 0 0 80px rgba(248, 232, 220, 0.32);
+  animation: breathe 4.8s ease-in-out infinite;
+}
+
+.ritual-line {
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.box-stage {
+  width: min(980px, 100%);
+  display: grid;
+  grid-template-columns: minmax(240px, 0.66fr) minmax(0, 0.88fr);
+  gap: clamp(30px, 7vw, 82px);
+  align-items: center;
+}
+
+.oracle-box {
+  position: relative;
+  margin: 0 auto;
+  width: min(330px, 76vw);
+  padding: 16px;
+  border: 1px solid rgba(185, 144, 88, 0.34);
+  border-radius: 26px;
+  background: linear-gradient(145deg, var(--dried-blood), var(--red-night));
+  box-shadow: 0 30px 90px rgba(38, 5, 10, 0.48);
+}
+
+.oracle-box::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  z-index: -1;
+  border: 1px solid rgba(185, 144, 88, 0.12);
+  border-radius: 34px;
+  transform: rotate(-4deg);
+}
+
+.oracle-box img {
+  border-radius: 18px;
+}
+
+.spread-screen {
+  align-content: start;
+  padding-bottom: clamp(60px, 10vw, 110px);
+}
+
+.spread-header {
+  width: min(760px, 100%);
+  margin: 0 auto clamp(34px, 8vw, 70px);
+  text-align: center;
+}
+
+.spread-header h2 {
+  max-width: 10ch;
+  margin: 0 auto;
+}
+
+.spread-header p:not(.oracle-eyebrow) {
+  max-width: 42ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-spread {
+  position: relative;
+  width: min(1120px, 100%);
+  min-height: clamp(620px, 76vw, 760px);
+  margin: 0 auto;
+}
+
+.spread-card {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: clamp(116px, 19vw, 178px);
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  box-shadow: 0 18px 44px rgba(38, 5, 10, 0.38);
+  transform: rotate(var(--r));
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.spread-card:hover,
+.spread-card:focus-visible {
+  filter: brightness(1.08);
+  transform: translateY(-10px) rotate(var(--r));
+}
+
+.spread-card img {
+  border: 1px solid rgba(248, 232, 220, 0.22);
+  border-radius: 14px;
+}
+
+.result-screen {
+  align-items: center;
+}
+
+.result-layout {
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 0.72fr) minmax(0, 1fr);
+  gap: clamp(32px, 7vw, 84px);
+  align-items: start;
+}
+
+.result-card-wrap {
+  position: sticky;
+  top: 28px;
+}
+
+.result-copy h2 {
+  max-width: 9.5ch;
+}
+
+.essential {
+  margin: 24px 0 30px;
+  color: var(--cream);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 4.6vw, 3rem);
+  line-height: 1.05;
+}
+
+.result-block {
+  padding: 22px 0;
+  border-top: 1px solid rgba(248, 232, 220, 0.14);
+}
+
+.result-block p {
+  margin-bottom: 0;
+}
+
+.communicate p {
+  color: var(--cream);
+  font-weight: 400;
+}
+
+.context-cta {
+  margin-top: 18px;
+  padding: 22px;
+  border: 1px solid rgba(185, 144, 88, 0.22);
+  border-radius: 18px;
+  background: rgba(248, 232, 220, 0.08);
+}
+
+.context-cta p {
+  margin: 0 0 14px;
+}
+
+.context-cta a {
+  color: var(--cream);
+  font-weight: 700;
+  text-underline-offset: 5px;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.oracle-footer {
+  padding: 36px 18px;
+  border-top: 1px solid rgba(248, 232, 220, 0.12);
+  background: rgba(49, 9, 16, 0.7);
+}
+
+.oracle-footer p {
+  width: min(900px, 100%);
+  margin: 0 auto 12px;
+  color: rgba(248, 232, 220, 0.7);
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+@keyframes screenIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(0.82);
+    opacity: 0.72;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 820px) {
+  .threshold-grid,
+  .box-stage,
+  .result-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .threshold-copy {
+    order: 2;
+  }
+
+  .cover-card {
+    order: 1;
+    width: min(310px, 82vw);
+    margin: 0 auto;
+  }
+
+  .box-copy {
+    text-align: center;
+  }
+
+  .box-copy h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .card-spread {
+    min-height: 740px;
+  }
+
+  .result-card-wrap {
+    position: relative;
+    top: auto;
+    width: min(330px, 86vw);
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 560px) {
+  .oracle-screen {
+    padding: 26px 16px 52px;
+  }
+
+  h1 {
+    font-size: clamp(4.2rem, 21vw, 5.8rem);
+  }
+
+  h2 {
+    font-size: clamp(3.35rem, 18vw, 5rem);
+  }
+
+  .oracle-button {
+    width: 100%;
+  }
+
+  .card-spread {
+    min-height: 690px;
+  }
+
+  .spread-card {
+    width: clamp(96px, 31vw, 132px);
+  }
+
+  .result-actions .oracle-button {
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

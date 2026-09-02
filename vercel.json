@@ -7,6 +7,10 @@
     {
       "source": "/quiz",
       "destination": "/quiz/index.html"
+    },
+    {
+      "source": "/oraculo28ritmos",
+      "destination": "/oraculo28ritmos.html"
     }
   ]
 }

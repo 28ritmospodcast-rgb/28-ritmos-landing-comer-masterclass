@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Oráculo de tu Ritmo · 28 Ritmos</title>
+  <meta name="description" content="Un oráculo interactivo para ponerle palabras a tu ritmo de hoy y convertirlo en cuidado, expresión y comunicación." />
+  <meta property="og:title" content="El Oráculo de tu Ritmo" />
+  <meta property="og:description" content="Entrá, respirá, abrí la caja y elegí la carta que te llama hoy." />
+  <meta property="og:image" content="oraculo/assets/portada-mariposa.webp" />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="oraculo/assets/portada-mariposa.webp">
+  <link rel="preload" as="image" href="oraculo/assets/card-back-jaguares.webp">
+  <link rel="stylesheet" href="oraculo/oraculo.css" />
+  <script src="https://t.contentsquare.net/uxa/dbc3b6485db38.js" defer></script>
+</head>
+<body>
+  <main class="oracle-shell" id="oraculo">
+    <section class="oracle-screen is-active" data-screen="threshold" aria-labelledby="threshold-title">
+      <div class="temple-glow" aria-hidden="true"></div>
+      <div class="threshold-grid">
+        <div class="threshold-copy">
+          <p class="oracle-eyebrow">Un oráculo de 28 Ritmos</p>
+          <h1 id="threshold-title">El Oráculo de tu Ritmo</h1>
+          <p class="oracle-lead">Hay días para ir hacia adentro y días para ocupar más espacio. Días para sostenerte y días para usar todo lo que está disponible en vos.</p>
+          <p>Entrá despacio. No venís a responder perfecto. Venís a escuchar qué carta te llama hoy.</p>
+          <button class="oracle-button" type="button" data-next="prepare">Entrar al oráculo</button>
+          <p class="oracle-note">No adivina tu fase ni diagnostica síntomas. Te ayuda a observar, nombrar y elegir.</p>
+        </div>
+        <figure class="cover-card">
+          <img src="oraculo/assets/portada-mariposa.webp" alt="Ilustración oracular de una mariposa rodeada de hojas y ojos" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="oracle-screen prepare-screen" data-screen="prepare" aria-labelledby="prepare-title">
+      <div class="ritual-panel">
+        <p class="oracle-eyebrow">Antes de entrar</p>
+        <h2 id="prepare-title">No busques una respuesta correcta.</h2>
+        <p>Elegí lo que se parezca más a este momento. Aunque mañana sea diferente. Aunque no sepas explicarlo todavía.</p>
+        <div class="breath-cue" aria-hidden="true"><span></span></div>
+        <p class="ritual-line">Respirá una vez. Aflojá la mandíbula. Sentí los pies.</p>
+        <button class="oracle-button" type="button" data-next="box">Estoy lista</button>
+      </div>
+    </section>
+
+    <section class="oracle-screen box-screen" data-screen="box" aria-labelledby="box-title">
+      <div class="box-stage">
+        <div class="oracle-box" aria-hidden="true">
+          <img src="oraculo/assets/card-back-jaguares.webp" alt="" />
+        </div>
+        <div class="box-copy">
+          <p class="oracle-eyebrow">La caja</p>
+          <h2 id="box-title">Tu mesa está preparada.</h2>
+          <p>No hay cartas buenas ni malas. Hay ritmos diferentes. Abrí la caja cuando estés lista para mirar.</p>
+          <button class="oracle-button" type="button" data-next="spread">Abrir la caja</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="oracle-screen spread-screen" data-screen="spread" aria-labelledby="spread-title">
+      <div class="spread-header">
+        <p class="oracle-eyebrow">Elegir</p>
+        <h2 id="spread-title">Dejá que una carta te llame.</h2>
+        <p>No pienses demasiado. Tocá la que hoy te mire de vuelta.</p>
+      </div>
+      <div class="card-spread" id="cardSpread" aria-label="Cartas del oráculo boca abajo"></div>
+    </section>
+
+    <section class="oracle-screen result-screen" data-screen="result" aria-live="polite" aria-labelledby="resultTitle">
+      <div class="result-layout">
+        <figure class="result-card-wrap">
+          <img id="resultImage" src="" alt="" />
+        </figure>
+        <article class="result-copy">
+          <p class="oracle-eyebrow">Tu carta</p>
+          <h2 id="resultTitle"></h2>
+          <p class="essential" id="resultEssential"></p>
+          <div class="result-block">
+            <h3>Lo que puede estar presente</h3>
+            <p id="resultMessage"></p>
+          </div>
+          <div class="result-block">
+            <h3>Pregunta del oráculo</h3>
+            <p id="resultQuestion"></p>
+          </div>
+          <div class="result-block">
+            <h3>Un gesto de menos de diez minutos</h3>
+            <p id="resultAction"></p>
+          </div>
+          <div class="result-block communicate">
+            <h3>Para comunicar</h3>
+            <p id="resultCommunicate"></p>
+          </div>
+          <div class="context-cta" id="contextCta"></div>
+          <div class="result-actions">
+            <button class="oracle-button secondary" type="button" id="shareCard">Compartir mi carta</button>
+            <button class="oracle-button quiet" type="button" id="restartOracle">Volver a consultar</button>
+          </div>
+          <p class="oracle-note">Podés volver a consultar si tu estado cambia. No hace falta repetir hasta encontrar una carta “mejor”.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="oracle-footer">
+    <p>El Oráculo de tu Ritmo es una experiencia educativa y reflexiva. No determina fases del ciclo, diagnostica condiciones, interpreta síntomas ni reemplaza atención médica o psicológica. Si algo es intenso, persistente, nuevo o te preocupa, consultá con un profesional.</p>
+    <p>La elección de esta carta no se guarda como dato de salud. La carta se revela en esta sesión para acompañar una reflexión puntual.</p>
+  </footer>
+
+  <script src="oraculo/oraculo.js" defer></script>
+</body>
+</html>
