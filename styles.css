@@ -25,10 +25,10 @@ body {
   margin: 0;
   font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background:
-    radial-gradient(circle at 1px 1px, rgba(38, 31, 26, 0.035) 1px, transparent 0),
-    linear-gradient(rgba(38, 31, 26, 0.024) 1px, transparent 1px),
+    linear-gradient(rgba(243, 239, 231, 0.86), rgba(243, 239, 231, 0.86)),
+    url("texturas background website/fern-leaf-wallpaper-abstract-exotic-plant-seamless-pattern-tropical-palm-leaves-pattern-botanical-texture-vector.jpg"),
     var(--linen);
-  background-size: 18px 18px, 100% 42px;
+  background-size: auto, 520px 520px, auto;
   color: var(--dark-cacao);
   -webkit-font-smoothing: antialiased;
 }
@@ -39,8 +39,9 @@ body::before {
   inset: 0;
   z-index: -1;
   background:
-    repeating-linear-gradient(90deg, rgba(139, 115, 84, 0.03) 0 1px, transparent 1px 72px),
-    repeating-linear-gradient(0deg, rgba(139, 115, 84, 0.025) 0 1px, transparent 1px 72px);
+    radial-gradient(circle at 18% 10%, rgba(201, 133, 107, 0.1), transparent 28%),
+    radial-gradient(circle at 82% 24%, rgba(102, 115, 90, 0.11), transparent 30%),
+    linear-gradient(rgba(250, 246, 238, 0.34), rgba(233, 222, 207, 0.42));
   pointer-events: none;
 }
 
@@ -771,7 +772,7 @@ p {
 }
 
 .price {
-  margin: 0 0 18px;
+  margin: 0 0 8px;
   color: var(--dark-cacao);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: 4rem;
@@ -781,7 +782,7 @@ p {
 .checkout-card ul {
   list-style: none;
   padding: 0;
-  margin: 28px 0;
+  margin: 18px 0 24px;
   display: grid;
   gap: 14px;
 }
